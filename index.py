@@ -6,7 +6,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from jogo_da_velha import criar_board, faz_movimento, get_input_valido, \
                             print_board, verifica_ganhador, verica_movimento
 
-from minimax import movimento_ia
+from minimax import movimentoIA
 
 jogador = 0
 board = criar_board()
@@ -20,7 +20,7 @@ while(not ganhador):
     imprime_barra()
 
     if (jogador == 0):
-        i, j = movimento_ia(board, jogador)
+        i, j = movimentoIA(board, jogador)
     else:
         i = get_input_valido("Digite a linha: ")
         j = get_input_valido("Digite a coluna: ")

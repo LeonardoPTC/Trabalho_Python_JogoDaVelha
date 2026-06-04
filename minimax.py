@@ -1,4 +1,6 @@
-from jogo_da_velha import branco, token, verifica_ganhador
+import random
+
+from jogo_da_velha import branco, token, verifica_ganhador, faz_movimento
 
 score = {
     "EMPATE": 0,
@@ -7,7 +9,7 @@ score = {
 }
 
 #função de posições
-def get_posicoes(board):
+def getPosicoes(board):
     posicoes = []
 
     for i in range(3):
@@ -18,8 +20,8 @@ def get_posicoes(board):
     return posicoes
 
 #função de movimento da I.A.
-def movimento_ia(board, jogador):
-    possibilidades = get_posicoes(board)
+def movimentoIA(board, jogador):
+    possibilidades = getPosicoes(board)
     melhor_valor = None
     melhor_movimento = None
 
@@ -42,6 +44,20 @@ def movimento_ia(board, jogador):
 
     return melhor_movimento[0], melhor_movimento[1]
 
+#função de movimento da I.A. fácil (aleatória)
+def movimentoIA_facil(board, jogador):
+    posicoes = getPosicoes(board)
+    i, j = random.choice(posicoes)
+    faz_movimento(board, i, j, jogador)
+
+#função de movimento da I.A. média (probabilística)
+def movimentoIA_medio(board, jogador):
+    if (random.random() < 0.5):
+        i, j = movimentoIA(board, jogador)
+        faz_movimento(board, i, j, jogador)
+    else:
+        movimentoIA_facil(board, jogador)
+
 def minimax(board, jogador):
     ganhador = verifica_ganhador(board)
 
@@ -50,7 +66,7 @@ def minimax(board, jogador):
     
     jogador = (jogador + 1) % 2
 
-    possibilidades = get_posicoes(board)
+    possibilidades = getPosicoes(board)
     melhor_valor = None
 
     for possibilidade in possibilidades:

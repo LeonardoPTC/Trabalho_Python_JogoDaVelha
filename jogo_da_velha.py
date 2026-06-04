@@ -39,6 +39,7 @@ def get_input_valido(mensagem):
 
 #função para verificar o movimento
 def verica_movimento(board, i, j):
+    
     if (board[i][j] == branco):
         return True
     else:
