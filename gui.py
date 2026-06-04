@@ -86,9 +86,14 @@ def mostra_resultado(win, board, dificuldade, ganhador):
     else:
         mensagem = "Vencedor: " + ganhador
 
-    win.blit(font.render(mensagem, 1, (255, 255, 255)), (170, 250))
-    win.blit(font.render("Pressione uma tecla", 1, (255, 255, 255)), (90, 320))
-    win.blit(font.render("para voltar ao menu", 1, (255, 255, 255)), (90, 380))
+    def blit_centralizado(texto, y):
+        render = font.render(texto, 1, (255, 255, 255))
+        x = (600 - render.get_width()) // 2
+        win.blit(render, (x, y))
+
+    blit_centralizado(mensagem, 250)
+    blit_centralizado("Pressione uma tecla", 320)
+    blit_centralizado("para voltar ao menu", 380)
     pygame.display.update()
 
     while(True):
