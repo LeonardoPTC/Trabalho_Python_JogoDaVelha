@@ -58,7 +58,7 @@ def escolhe_dificuldade(win):
     font = pygame.font.SysFont('comicsans', 40)
 
     win.fill((25, 42, 86))
-    win.blit(font.render("Escolha a dificuldade", 1, (255, 255, 255)), (90, 120))
+    win.blit(font.render("Escolha a dificuldade", 1, (255, 255, 255)), (110, 120))
     win.blit(font.render("1 - Facil", 1, (255, 255, 255)), (220, 240))
     win.blit(font.render("2 - Medio", 1, (255, 255, 255)), (220, 310))
     win.blit(font.render("3 - Dificil", 1, (255, 255, 255)), (220, 380))
@@ -87,7 +87,8 @@ def mostra_resultado(win, board, dificuldade, ganhador):
         mensagem = "Vencedor: " + ganhador
 
     win.blit(font.render(mensagem, 1, (255, 255, 255)), (170, 250))
-    win.blit(font.render("Pressione uma tecla", 1, (255, 255, 255)), (110, 330))
+    win.blit(font.render("Pressione uma tecla", 1, (255, 255, 255)), (90, 320))
+    win.blit(font.render("para voltar ao menu", 1, (255, 255, 255)), (90, 380))
     pygame.display.update()
 
     while(True):
